@@ -10,14 +10,14 @@ class StyleManager:
                 font-size: {font_size}px;
                 font-weight: bold;
                 color: white;
-                background-color: red;
+                
             """)
         elif widget_type == 'instructions':
             font_size = max(12, window_width // 40)
             widget.setStyleSheet(f"""
                 font-size: {font_size}px;
                 color: white;
-                background-color: red;
+                
             """)
         elif widget_type == 'label':
             font_size = max(10, window_width // 30)
@@ -43,7 +43,7 @@ class StyleManager:
             """)
         elif widget_type == 'result':
             widget.setStyleSheet("""
-                background-color: red;
+              
                 font-size: 16px;
                 color: white;
             """)
