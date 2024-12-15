@@ -21,9 +21,7 @@ class StyleManager:
             """)
         elif widget_type == 'label':
             font_size = max(10, window_width // 30)
-            padding_left = window_width * 0.1
             widget.setStyleSheet(f"""
-                padding-left: {padding_left}px;
                 font-size: {font_size}px;
                 color: white;
             """)
@@ -51,9 +49,24 @@ class StyleManager:
                 font-size: 16px;
                 color: white;
             """)
+        elif widget_type == 'input':
+            font_size = max(10, window_width // 30)
+            widget.setStyleSheet(f"""
+                QLineEdit {{
+                    font-size: {font_size}px;
+                    color: white;
+                    background-color: #333;
+                    border: 1px solid #555;
+                    padding: 5px;
+                }}
+                QLineEdit::placeholder {{
+                    color: #888;
+                }}
+            """)
 
     def update_styles(self):
         self.apply_style(self.window.title_label, 'title')
         self.apply_style(self.window.instructions_label, 'instructions')
         self.apply_style(self.window.label, 'label')
         self.apply_style(self.window.button, 'button')
+        self.apply_style(self.window.extension_input, 'input')

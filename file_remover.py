@@ -1,13 +1,13 @@
 import os
 
-def remove_json_files(directory):
+def remove_files(directory, file_extension):
     count = 0
     failed = 0
     failed_paths = []
 
     for root, dirs, files in os.walk(directory):
         for file in files:
-            if file.endswith('.json'):
+            if file.endswith(file_extension):
                 file_path = os.path.join(root, file)
 
                 try:
