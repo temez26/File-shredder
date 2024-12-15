@@ -30,7 +30,7 @@ class MainWindow(QWidget):
         self.style_manager.apply_style(self.label, 'label')
 
         self.extension_input = QLineEdit(self)
-        self.extension_input.setPlaceholderText('Enter file extension (e.g., .json)')
+        self.extension_input.setPlaceholderText('extension (e.g., .json, .jpg, .mp4)')
         self.style_manager.apply_style(self.extension_input, 'input')
 
         self.button = QPushButton('Browse', self)
