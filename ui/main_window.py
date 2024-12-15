@@ -18,7 +18,7 @@ class MainWindow(QWidget):
         self.setMaximumHeight(600)
 
         layout = QGridLayout()
-        icon_path = os.path.join(os.path.dirname(__file__), 'shredder.ico')
+        icon_path = os.path.join(os.path.dirname(__file__), '../assets/shredder.ico')
         self.setWindowIcon(QIcon(icon_path))
 
         self.title_label = QLabel('File Shredder', self)
