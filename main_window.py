@@ -2,11 +2,12 @@ from PyQt6.QtWidgets import QWidget, QGridLayout, QPushButton, QFileDialog, QLab
 from PyQt6.QtGui import QIcon
 from PyQt6.QtCore import Qt, QEvent, QPropertyAnimation, QEasingCurve
 from file_remover import remove_json_files
-
+from style_manager import StyleManager
 
 class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
+        self.style_manager = StyleManager(self)
         self.initUI()
 
     def initUI(self):
@@ -18,23 +19,23 @@ class MainWindow(QWidget):
 
         self.title_label = QLabel('File Shredder', self)
         self.title_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.apply_style(self.title_label, 'title')
+        self.style_manager.apply_style(self.title_label, 'title')
 
         self.instructions_label = QLabel('Select a directory to remove all JSON files.', self)
         self.instructions_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.apply_style(self.instructions_label, 'instructions')
+        self.style_manager.apply_style(self.instructions_label, 'instructions')
 
         self.label = QLabel('Select Directory', self)
         self.label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.apply_style(self.label, 'label')
+        self.style_manager.apply_style(self.label, 'label')
 
         self.button = QPushButton('Browse', self)
-        self.apply_style(self.button, 'button')
+        self.style_manager.apply_style(self.button, 'button')
         self.button.clicked.connect(self.select_directory)
 
         self.result_label = QLabel('', self)
         self.result_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.apply_style(self.result_label, 'result')
+        self.style_manager.apply_style(self.result_label, 'result')
 
         self.failed_paths_area = QScrollArea(self)
         self.failed_paths_area.setWidgetResizable(True)
@@ -68,66 +69,10 @@ class MainWindow(QWidget):
 
     def eventFilter(self, source, event):
         if event.type() == QEvent.Type.Resize:
-            self.update_styles()
+            self.style_manager.update_styles()
         elif event.type() == QEvent.Type.Enter and source == self.button:
             self.button_animation.start()
         return super().eventFilter(source, event)
-
-    def apply_style(self, widget, widget_type):
-        window_width = self.width()
-        if widget_type == 'title':
-            font_size = max(16, window_width // 25)
-            widget.setStyleSheet(f"""
-                font-size: {font_size}px;
-                font-weight: bold;
-                color: white;
-                background-color: red;
-            """)
-        elif widget_type == 'instructions':
-            font_size = max(12, window_width // 40)
-            widget.setStyleSheet(f"""
-                font-size: {font_size}px;
-                color: white;
-                background-color: red;
-            """)
-        elif widget_type == 'label':
-            font_size = max(10, window_width // 30)
-            padding_left = window_width * 0.1
-            widget.setStyleSheet(f"""
-                padding-left: {padding_left}px;
-                font-size: {font_size}px;
-                color: white;
-            """)
-        elif widget_type == 'button':
-            font_size = max(10, window_width // 30)
-            padding = max(5, window_width // 100)
-            button_width = max(150, window_width // 5)
-            button_height = max(40, window_width // 20)
-            widget.setFixedSize(button_width, button_height)
-            widget.setStyleSheet(f"""
-                QPushButton {{
-                    background-color: #0078f2;
-                    color: white;
-                    font-size: {font_size}px;
-                    border-radius: 5px;
-                    padding: {padding}px;
-                }}
-                QPushButton:hover {{
-                    background-color: #005bb5;
-                }}
-            """)
-        elif widget_type == 'result':
-            widget.setStyleSheet("""
-                background-color: red;
-                font-size: 16px;
-                color: white;
-            """)
-
-    def update_styles(self):
-        self.apply_style(self.title_label, 'title')
-        self.apply_style(self.instructions_label, 'instructions')
-        self.apply_style(self.label, 'label')
-        self.apply_style(self.button, 'button')
 
     def select_directory(self):
         directory = QFileDialog.getExistingDirectory(self, 'Select Directory')
