@@ -3,7 +3,7 @@ from PyQt6.QtGui import QIcon
 from PyQt6.QtCore import Qt, QEvent, QPropertyAnimation, QEasingCurve
 from file_remover import remove_files
 from style_manager import StyleManager
-
+import os
 class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
@@ -15,7 +15,8 @@ class MainWindow(QWidget):
         self.setGeometry(1000, 500, 400, 300)
 
         layout = QGridLayout()
-        self.setWindowIcon(QIcon('shredder.png'))
+        icon_path = os.path.join(os.path.dirname(__file__), 'shredder.ico')
+        self.setWindowIcon(QIcon(icon_path))
 
         self.title_label = QLabel('File Shredder', self)
         self.title_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
