@@ -80,10 +80,17 @@ class MainWindow(QWidget):
         return super().eventFilter(source, event)
 
     def select_directory(self):
-        directory = QFileDialog.getExistingDirectory(self, 'Select Directory')
         file_extension = self.extension_input.text().strip()
-        if directory and file_extension:
-            success, failed, failed_paths = remove_files(directory, file_extension)
+        if not file_extension:
+            self.result_label.setText('Please enter a file extension.')
+            return
+
+        directory = QFileDialog.getExistingDirectory(self, 'Select Directory')
+        if directory:
+            self.result_label.setText('Deleting files...')
+            self.result_label.repaint()  # Force update the label to show the message immediately
+
+            success, failed, failed_paths = remove_files(directory, file_extension, self.result_label)
             if failed == 0:
                 self.result_label.setText(f'All {file_extension} files removed successfully!\nFiles removed: {success}')
             else:
