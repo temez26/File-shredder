@@ -14,6 +14,9 @@ class MainWindow(QWidget):
         self.setWindowTitle('File Shredder')
         self.setGeometry(1000, 500, 400, 300)
 
+        self.setMaximumWidth(800)
+        self.setMaximumHeight(600)
+
         layout = QGridLayout()
         icon_path = os.path.join(os.path.dirname(__file__), 'shredder.ico')
         self.setWindowIcon(QIcon(icon_path))
