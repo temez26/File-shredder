@@ -2,7 +2,7 @@ from PyQt6.QtWidgets import QWidget, QGridLayout, QPushButton, QFileDialog, QLab
 from PyQt6.QtGui import QIcon
 from PyQt6.QtCore import Qt, QEvent, QPropertyAnimation, QEasingCurve
 from file_remover import remove_json_files
-import webbrowser
+
 
 class MainWindow(QWidget):
     def __init__(self):
@@ -104,10 +104,10 @@ class MainWindow(QWidget):
 
     def update_button_style(self):
         window_width = self.width()
-        font_size = max(10, window_width // 30)# Adjust font size based on window width
-        padding = max(5, window_width // 100)    # Adjust padding based on window width
-        button_width = max(150, window_width // 5)  # Adjust button width based on window width
-        button_height = max(40, window_width // 20)  # Adjust button height based on window width
+        font_size = max(10, window_width // 30)
+        padding = max(5, window_width // 100)   
+        button_width = max(150, window_width // 5)  
+        button_height = max(40, window_width // 20)  
         self.button.setFixedSize(button_width, button_height)
         self.button.setStyleSheet(f"""
             QPushButton {{
