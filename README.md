@@ -10,17 +10,13 @@
 ## Requirements 🛠️
 
 - Python 3.6 or higher installed on your system.
+- PyQt6 library.
 
 ## Usage 🚀
 
-1. Edit the script to set your target directory and file type.
-   ```python
-   base_directory = r'insert root filepath here'
-   if file.endswith('.json'):  # Change ".json" to your desired file extension
-   ```
-2. Run the script:
+1. Run the script:
    ```bash
-   $ python file_shredder.py
+   $ python Main.py
    ```
 
 ## Example 🖥️
