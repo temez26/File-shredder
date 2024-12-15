@@ -12,7 +12,7 @@ class MainWindow(QWidget):
 
     def initUI(self):
         self.setWindowTitle('File Shredder')
-        self.setGeometry(100, 100, 400, 300)
+        self.setGeometry(1000, 500, 400, 300)
 
         layout = QGridLayout()
         self.setWindowIcon(QIcon('shredder.png'))

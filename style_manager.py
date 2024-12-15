@@ -27,10 +27,8 @@ class StyleManager:
             """)
         elif widget_type == 'button':
             font_size = max(10, window_width // 30)
-            padding = max(5, window_width // 100)
-            button_width = max(150, window_width // 5)
-            button_height = max(40, window_width // 20)
-            widget.setFixedSize(button_width, button_height)
+            padding = max(5, window_width // 150)
+        
             widget.setStyleSheet(f"""
                 QPushButton {{
                     background-color: #0078f2;
