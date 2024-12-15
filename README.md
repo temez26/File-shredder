@@ -16,7 +16,7 @@
 
 1. Run the script:
    ```bash
-   $ python Main.py
+    python Main.py
    ```
 
 ## Example 🖥️
