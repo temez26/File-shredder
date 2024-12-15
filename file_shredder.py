@@ -1,6 +1,6 @@
 import sys
 import os
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QFileDialog, QMessageBox
+from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QFileDialog, QMessageBox
 
 def remove_json_files(directory):
     for root, dirs, files in os.walk(directory):
@@ -40,4 +40,4 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = FileShredder()
     ex.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
