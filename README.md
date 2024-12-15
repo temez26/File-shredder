@@ -23,6 +23,14 @@
 
 If you want to delete `.txt` files (or any other), replace `.json` with `.txt` in the script. The updated script will now remove `.txt` files instead.
 
+## Build
+
+For building the shredder.exe
+
+```bash
+pyinstaller --onefile --noconsole --icon=shredder.ico --add-data "shredder.ico;." Main.py
+```
+
 ---
 
 Happy Cleaning! 🧹✨

@@ -3,7 +3,7 @@ from PyQt6.QtGui import QIcon
 from PyQt6.QtCore import Qt, QEvent, QPropertyAnimation, QEasingCurve
 from file_remover import remove_files
 from style_manager import StyleManager
-
+import os
 class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
@@ -15,7 +15,8 @@ class MainWindow(QWidget):
         self.setGeometry(1000, 500, 400, 300)
 
         layout = QGridLayout()
-        self.setWindowIcon(QIcon('shredder.png'))
+        icon_path = os.path.join(os.path.dirname(__file__), 'shredder.ico')
+        self.setWindowIcon(QIcon(icon_path))
 
         self.title_label = QLabel('File Shredder', self)
         self.title_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -80,10 +81,17 @@ class MainWindow(QWidget):
         return super().eventFilter(source, event)
 
     def select_directory(self):
-        directory = QFileDialog.getExistingDirectory(self, 'Select Directory')
         file_extension = self.extension_input.text().strip()
-        if directory and file_extension:
-            success, failed, failed_paths = remove_files(directory, file_extension)
+        if not file_extension:
+            self.result_label.setText('Please enter a file extension.')
+            return
+
+        directory = QFileDialog.getExistingDirectory(self, 'Select Directory')
+        if directory:
+            self.result_label.setText('Deleting files...')
+            self.result_label.repaint()  # Force update the label to show the message immediately
+
+            success, failed, failed_paths = remove_files(directory, file_extension, self.result_label)
             if failed == 0:
                 self.result_label.setText(f'All {file_extension} files removed successfully!\nFiles removed: {success}')
             else:
