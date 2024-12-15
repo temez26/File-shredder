@@ -16,7 +16,7 @@
 
 1. Run the script:
    ```bash
-    python Main.py
+    python main.py
    ```
 
 ## Example 🖥️
@@ -28,7 +28,7 @@ If you want to delete `.txt` files (or any other), replace `.json` with `.txt` i
 For building the shredder.exe
 
 ```bash
-pyinstaller --onefile --noconsole --icon=shredder.ico --add-data "shredder.ico;." Main.py
+pyinstaller --onefile --noconsole --icon=shredder.ico --add-data "shredder.ico;." main.py
 ```
 
 ---

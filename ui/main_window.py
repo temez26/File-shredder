@@ -1,8 +1,8 @@
 from PyQt6.QtWidgets import QWidget, QGridLayout, QPushButton, QFileDialog, QLabel, QSpacerItem, QSizePolicy, QScrollArea, QVBoxLayout, QLineEdit
 from PyQt6.QtGui import QIcon
 from PyQt6.QtCore import Qt, QEvent, QPropertyAnimation, QEasingCurve
-from file_remover import remove_files
-from style_manager import StyleManager
+from services.file_remover import remove_files
+from ui.style_manager import StyleManager
 import os
 class MainWindow(QWidget):
     def __init__(self):
