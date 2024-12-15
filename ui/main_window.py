@@ -1,8 +1,8 @@
 from PyQt6.QtWidgets import QWidget, QGridLayout, QPushButton, QFileDialog, QLabel, QSpacerItem, QSizePolicy, QScrollArea, QVBoxLayout, QLineEdit
 from PyQt6.QtGui import QIcon
 from PyQt6.QtCore import Qt, QEvent, QPropertyAnimation, QEasingCurve
-from file_remover import remove_files
-from style_manager import StyleManager
+from services.file_remover import remove_files
+from ui.style_manager import StyleManager
 import os
 class MainWindow(QWidget):
     def __init__(self):
@@ -13,6 +13,9 @@ class MainWindow(QWidget):
     def initUI(self):
         self.setWindowTitle('File Shredder')
         self.setGeometry(1000, 500, 400, 300)
+
+        self.setMaximumWidth(800)
+        self.setMaximumHeight(600)
 
         layout = QGridLayout()
         icon_path = os.path.join(os.path.dirname(__file__), 'shredder.ico')
