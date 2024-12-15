@@ -1,21 +1,25 @@
 import os
 
 def remove_json_files(directory):
+    count = 0
+    failed = 0
+    failed_paths = []
+
     for root, dirs, files in os.walk(directory):
         for file in files:
             if file.endswith('.json'):
                 file_path = os.path.join(root, file)
-                Count = 0
-                Failed = 0
 
                 try:
                     os.remove(file_path)
-                    Count + 1
+                    count += 1
                     print(f"Removed: {file_path}")
 
-
                 except Exception as e:
-                    Failed + 1
+                    failed += 1
+                    failed_paths.append(file_path)
                     print(f"Error removing {file_path}: {e}")
-            Success = Count - Failed 
-            print(f"Success: {Success}")       
+
+    success = count - failed
+    print(f"Success: {success}, Failed: {failed}")
+    return success, failed, failed_paths
