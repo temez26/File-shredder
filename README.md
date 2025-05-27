@@ -1,36 +1,49 @@
-# File Shredder 🗑️
+# File Shredder
 
-**File Shredder** is a simple Python script to delete specific types of files (e.g., `.json`) from a directory and its subdirectories. 🚀
+A Python application for safely removing specific file types from directories and subdirectories.
 
-## Features ✨
+## Features
 
-- Recursively searches and deletes files.
-- Easy to customize for any file type.
+- Recursive file deletion by extension
+- Graphical user interface built with PyQt6
+- Real-time deletion progress tracking
+- Error handling and reporting for failed deletions
 
-## Requirements 🛠️
+## Requirements
 
-- Python 3.6 or higher installed on your system.
-- PyQt6 library.
+- Python 3.6+
+- PyQt6
 
-## Usage 🚀
+## Installation
 
-1. Run the script:
+1. Clone the repository:
+
    ```bash
-    python main.py
+   git clone <repository-url>
+   cd File-shredder
    ```
 
-## Example 🖥️
+2. Install dependencies:
+   ```bash
+   pip install PyQt6
+   ```
 
-If you want to delete `.txt` files (or any other), replace `.json` with `.txt` in the script. The updated script will now remove `.txt` files instead.
+## Usage
 
-## Build
-
-For building the shredder.exe
+Run the application:
 
 ```bash
-pyinstaller --onefile --noconsole --icon=shredder.ico --add-data "shredder.ico;." main.py
+python main.py
 ```
 
----
+1. Enter the file extension to target (e.g., `.json`, `.txt`)
+2. Select the target directory
+3. Confirm deletion
 
-Happy Cleaning! 🧹✨
+## Building Executable
+
+To create a standalone executable:
+
+```bash
+pyinstaller --onefile --noconsole --icon=assets/shredder.ico --add-data "assets/shredder.ico;assets" main.py
+```
